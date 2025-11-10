@@ -1,13 +1,12 @@
 # Procedural-terrain-generation-with-style-transfer
 
-`abstract`
+PyTorch reimplementation and experimentation of the original work on terrain style transfer, focusing on different spatial loss formulations. The project reproduces the method and explores alternative spatial losses to study their effect on morphology transfer.
 
-
-***In this study we introduce a new technique for the generation of terrain maps, exploiting a combination of procedural generation and Neural Style Transfer. We consider our approach to be a viable alternative to competing generative models, with our technique achieving greater versatility, lower hardware requirements and greater integration in the creative process of designers and developers. Our method involves generating procedural noise maps using either multi-layered smoothed Gaussian noise or the Perlin algorithm. We then employ an enhanced Neural Style transfer technique, drawing style from real world height maps. This fusion of algorithmic generation and neural processing holds the potential to produce terrains that are not only diverse but also closely aligned with the morphological characteristics of real-world landscapes, with our process yielding consistent terrain structures with low computational cost and offering the capability to create customized maps. Numerical evaluations further validate our model’s enhanced ability to accurately replicate terrain morphology, surpassing traditional procedural methods.***
+This project is unique in that it does not train a generator or the feature network. The feature extractor is frozen, and optimization is performed directly on the input image. The image is iteratively updated by minimizing a weighted combination of losses that preserve content while converging to the target style (e.g., Gram/spatial style losses) with optional total-variation regularization.
 
 ### Project Structure
 
-This repository contains several .py files for both the computation of the procedural noise maps and the transferring of terrain morphology. The project is currently working with tf 2.15 and keras 3, it should be compatible with previous versions as well. My focus is now shifting to deep prior image generators for the creation of the output image, feel free to reach out for the latest implementations, which are currently achieving the best results. 
+This repository contains several .py files for both the computation of the procedural noise maps and the transferring of terrain morphology. The implementation is in PyTorch. My focus is now shifting to deep prior image generators for the creation of the output image, feel free to reach out for the latest implementations, which are currently achieving the best results. 
 
 - `procedural_noise_functions.py`: 
     - **Description**: This file contains all the accessory functions needed to procedurally generate noise
@@ -29,3 +28,12 @@ This repository contains several .py files for both the computation of the proce
 ### Volumetric representation
 
 ![](https://github.com/fmerizzi/Procedural-terrain-generation-with-style-transfer/blob/main/images/summary.drawio.png)
+
+### Comparative Results
+
+- Achieved visually accurate terrain maps with **15.0x lower GPU memory usage** than GAN-based methods, surpassing the original work with a **+1.7% SSIM improvement**.
+
+
+#### Visual Comparison
+
+![](comparative_result.png)
