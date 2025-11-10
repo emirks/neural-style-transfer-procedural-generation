@@ -15,7 +15,10 @@ This repository contains several .py files for both the computation of the proce
     - **Description**: A generate file that when called save in the noise foldes a collection of generated noise images in grayscale. Takes as input the dimension of the output image and a flag discriminating between pern and explicit noise 
 
 - `transfer_morphology.py`: 
-    - **Description**: Contains the core code for generating transferring of the morphological features. Takes as input the number of necessary iterations. 
+    - **Description**: Contains the core code for generating transferring of the morphological features. Takes as input the number of necessary iterations.
+
+- `terrain_transfer_pytorch.py`: 
+    - **Description**: PyTorch reimplementation of the model. 
 
 ### Generating procedural maps
 
